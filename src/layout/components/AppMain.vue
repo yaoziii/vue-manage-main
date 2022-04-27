@@ -1,0 +1,29 @@
+<template>
+  <div class="app-main">
+    <router-view v-slot="{ Component }" :key="key">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "AppMain",
+  computed: {
+    key() {
+      return this.$route.path;
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.app-main {
+  min-height: calc(100vh - 60px);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+</style>
